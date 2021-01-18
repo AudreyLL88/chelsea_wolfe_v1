@@ -75,3 +75,131 @@ img {
 
 p {
   font-size: var(--normal-font-size); }
+
+/*Home*/
+.home {
+  position: relative;
+  display: grid;
+    grid-template-rows: 3fr 1fr;
+  height: calc(100vh - 3rem); }
+  .home__primary {
+    /*Animation*/
+    background-color: var(--first-color);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem; }
+  .home__title {
+    font-family: 'Pirata One', cursive;
+    font-size: var(--h1-font-size);
+    letter-spacing: .3rem;
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    color: var(--white-color);
+ }
+  .home__img {
+    width: 235px;
+    height: auto; }
+  .home__secondary {
+    /*Animation*/
+    background-color: var(--second-color);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-weight: bold; }
+  .home__year {
+    font-size: var(--h1-font-size);
+    -webkit-text-stroke: 2.3px var(--first-color);
+    color: transparent; }
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0; 
+    }
+    .l-header {
+    background-color: transparent; }
+    .nav {
+    display: grid;
+    grid-template-columns: 3fr 4fr 1fr; }
+    .nav__list {
+    display: flex;
+    }
+    .nav__item {
+    margin-right: 5rem;
+    margin-bottom: 0;
+    }
+    .nav__toggle {
+    display: none;
+    }
+    .home {
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+    }
+    .home__primary {
+    justify-content: center;
+    }
+    .home__img img {
+    position: absolute;
+    width: 361px;
+    top: 5%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: var(--z-normal);
+    }
+    .home__year {
+    writing-mode: vertical-rl;
+    margin-left: 5rem;
+    }
+}
+
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
