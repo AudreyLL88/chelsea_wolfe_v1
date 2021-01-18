@@ -76,6 +76,26 @@ img {
 p {
   font-size: var(--normal-font-size); }
 
+.nav__logo{
+    font-size: 1.5rem;
+    letter-spacing: .3rem;
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .nav__menu {
+      position: fixed;
+      left: -100%;
+      background-color:#400000;
+    
+      z-index: var(--z-fixed);
+      -webkit-transition: .5s;
+      transition: .5s; } } 
+  .nav__logo {
+    font-family: 'Pirata One', cursive;
+    color: var(--white-color); 
+}
+
 /*Home*/
 .home {
   position: relative;
@@ -125,21 +145,6 @@ p {
 @media screen and (min-width: 768px) {
   body {
     margin: 0; 
-    }
-    .l-header {
-    background-color: transparent; }
-    .nav {
-    display: grid;
-    grid-template-columns: 3fr 4fr 1fr; }
-    .nav__list {
-    display: flex;
-    }
-    .nav__item {
-    margin-right: 5rem;
-    margin-bottom: 0;
-    }
-    .nav__toggle {
-    display: none;
     }
     .home {
     grid-template-columns: 4fr 3fr;
