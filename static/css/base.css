@@ -78,22 +78,9 @@ p {
 
 .nav__logo{
     font-size: 1.5rem;
-    letter-spacing: .3rem;
-    color: black;
-}
-
-@media screen and (max-width: 768px) {
-    .nav__menu {
-      position: fixed;
-      left: -100%;
-      background-color:#400000;
-    
-      z-index: var(--z-fixed);
-      -webkit-transition: .5s;
-      transition: .5s; } } 
-  .nav__logo {
     font-family: 'Pirata One', cursive;
-    color: var(--white-color); 
+    letter-spacing: .3rem;
+    color: var(--white-color);
 }
 
 /*Home*/
@@ -207,4 +194,8 @@ p {
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.bg-black{
+    background: #000;
 }
