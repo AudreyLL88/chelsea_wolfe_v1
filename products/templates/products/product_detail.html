@@ -24,7 +24,7 @@
         <div class="info">
           
             <div class="item-info">
-                <span class="info-category">Record</span>
+                <span class="info-category">{{ product.category.friendly_name }}</span>
                 <h1 class="info-title">{{ product.name }}</h1>
                 {% if product.rating %}
                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
