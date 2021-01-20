@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<main class="container-fluid">
+        <div class="row">
+            <div>
+                {% if product.image %}
+                <img class="item" src="{{ product.image.url }}" alt="{{ product.name }}" />              
+            </div>
+                {% else %}
+                <a href="">
+                    <img class="item" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                </a>
+                {% endif %}
+        <div class="info">
+          
+            <div class="item-info">
+                <span class="info-category">Record</span>
+                <h1 class="info-title">{{ product.name }}</h1>
+                {% if product.rating %}
+                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                {% else %}
+                <small class="text-muted">No Rating</small>
+                {% endif %}
+                <p class="info-description">
+                {{ product.description }}
+                </p>
+            </div>
+
+            <!-- PRICE -->
+            <div class="price">
+                <span class="price-title">${{ product.price }}</span>
+                <a href="" class="price-button">ADD TO CART</a>
+            </div>
+        </div>
+        </div> 
+    </main>
+{% endblock %}

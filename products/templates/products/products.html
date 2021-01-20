@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container header-container">
+    <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
@@ -11,10 +11,42 @@
 
 {% block content %}
 <div class="container">
+    <h3 class="h3">shopping Demo-4 </h3>
     <div class="row">
-        <div class="col">
-            {{ products }}
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid4">
+                <div class="product-image4">
+                    {% if product.image %}
+                    <a href="media/cw_red.png">
+                        <img class="pic-1" src="media/cw_red.png" alt="{{ product.name }}">
+                    </a>
+                     {% else %}
+                    <a href="">
+                        <img class="pic-1" src="media/cw_red.png" alt="{{ product.name }}">
+                    </a>
+                     {% endif %}
+                    <ul class="social">
+                        <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                    <span class="product-new-label">New</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">{{ product.name }}</a></h3>
+                    <div class="price">
+                       ${{ product.price }}
+                    
+                    {% if product.rating %}
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                    {% else %}
+                        <small class="text-muted">No Rating</small>
+                    {% endif %}
+                    </div>
+                    <a class="add-to-cart" href="">ADD TO CART</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-{% endblock%}
+{% endblock %}
