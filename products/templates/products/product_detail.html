@@ -106,13 +106,13 @@
                     <div class="container">
                         <div class="col-md-12">
                             <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix">
-                                <h5 class="mb-0 mb-4">Ratings and Reviews</h5>
+                                <h5 class="mb-0 mb-4 review-header">Ratings and Reviews</h5>
                                     <div class="row align-items-start">
-                                        <div class="col-lg-4 col-sm-12">
+                                        <div class="col-lg-4 col-sm-12 review-total">
                                             <b class="text-black">334</b>
                                             <p>total review</p>
                                         </div>
-                                        <div class="col-lg-4 col-sm-12">
+                                        <div class="col-lg-4 col-sm-12 review-average">
                                             <b class="text-black">4.4</b>
                                             <a href="#"><i class="far fa-star"></i></a>
                                             <a href="#"><i class="far fa-star"></i></a>
@@ -121,15 +121,15 @@
                                             <a href="#"><i class="far fa-star"></i></a>
                                             <p>average rating</p>
                                         </div>
-                                        <div class="col-lg-4 col-sm-12">
+                                        <div class="col-lg-4 col-sm-12 review-btn-up">
                                             <button type="button" class="btn btn-sm review-button-clear">write a review</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 ">
-                                    <h5 class="mb-1">Customer's reviews</h5>
+                                    <h5 class="mb-1 review-title-detail">Customer's reviews</h5>
                                     <div class=" pt-4 pb-4">
-                                        <div class="row align-items-start">
+                                        <div class="row align-items-start review-detail">
                                             <div class="col-4">
                                                 <h6 class="mb-1">Audrey Lloancy</h6>
                                                 <p class="text-gray">Tue, 20 Mar 2021</p>
@@ -152,10 +152,10 @@
                                         </div>
                                     <hr>
                                 </div>
-                            <div class="bg-white rounded shadow-sm p-4 mb-5">
-                                <h5 class="mb-4">Leave a Review</h5>
-                                <p class="mb-2">Your rating</p>
-                                <div class="mb-4">
+                            <div class="bg-white rounded shadow-sm p-4 mb-5 review-write">
+                                <h5 class="mb-4 review-write-detail">Leave a Review</h5>
+                                <p class="mb-2 review-write-detail">Your rating</p>
+                                <div class="mb-4 review-write-detail">
                                     <span>
                                         <a href="#"><i class="far fa-star"></i></a>
                                         <a href="#"><i class="far fa-star"></i></a>
@@ -164,21 +164,21 @@
                                         <a href="#"><i class="far fa-star"></i></a>
                                     </span>
                                 </div>
-                            <form>
-                                <div class="form-group">
-                                <label>Your review</label>
-                                <textarea class="form-control"></textarea>
+                                <form>
+                                    <div class="form-group review-write-detail">
+                                        <label>Your review</label>
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group review-write-detail">
+                                        <button class="btn btn-sm review-button-clear" type="button"> Submit Review 
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <button class="btn btn-sm review-button-clear" type="button"> Submit Review 
-                                </button>
-                            </div>
-                        </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</main>
+            </main>
 {% endblock %}
 {% block postloadjs %}
 {{ block.super }}
@@ -190,5 +190,23 @@ gsap.from(".size", { opacity: 0, duration: 1, delay: 3, x: -100 });
 gsap.from(".quantity", { opacity: 0, duration: 1, delay: 3, x: 100 });
 gsap.from(".price-title", { opacity: 0, duration: 1, delay: 3.5, y: 50 });
 gsap.from(".price-button", { opacity: 0, duration: 1, delay: 3.5, y: -50 });
+</script>
+<script type="text/javascript">
+    const sr = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 2000,
+    reset: true
+})
+
+/*SCROLL Review*/
+sr.reveal('.review-header', {delay: 200})
+sr.reveal('.review-total', {delay: 300})
+sr.reveal('.review-average', {delay: 400})
+sr.reveal('.review-btn-up', {delay: 500})
+sr.reveal('.review-title-detail', {delay: 200})
+sr.reveal('.review-detail', {delay: 400})
+sr.reveal('.review-write', {delay: 600})
+sr.reveal('.review-write-detail', {delay: 800, interval: 200})
 </script>
 {% endblock %}

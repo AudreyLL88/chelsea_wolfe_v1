@@ -28,12 +28,12 @@
 
 <section id="featured" class="col-10 offset-1 mb-5">
    <div class="row text-center">
-       <div class=" col text-full text-center pt-5 pb-4">
+       <div class=" col text-full text-center pt-5 pb-4 featured-title">
             <h2>OUR LATEST PRODUCTS</h2>
         </div>
    </div>
    <hr>
-   <div class="row">
+   <div class="row featured-card">
        <div class="col-sm-6 col-lg-4 col-xl-3 card__wrapper">
             <div class="box">
                 <div class="top__box">
@@ -133,8 +133,8 @@
                     gothic rock, doom metal, and folk music. Raised in Northern California with a country musician father, Wolfe began writing 
                     and recording songs during her childhood.
                 </p>     
-                <a href="" class="mr-4  mt-4 text-center text-full"><i class="fab fa-spotify fa-3x"></i></a>
-                <a href="" class=" mr-4 mt-4 text-center text-full"><i class="fab fa-youtube fa-3x"></i></a>
+                <a href="" class="mr-4  mt-4 text-center text-full media-icon"><i class="fab fa-spotify fa-3x"></i></a>
+                <a href="" class=" mr-4 mt-4 text-center text-full media-icon"><i class="fab fa-youtube fa-3x"></i></a>
             </div>
         </div>
     </div>
@@ -142,19 +142,19 @@
 <section id="security" class="bg-light text-full no-gutters">
     <div class="row text-center pt-5 pb-5 security__details">
         <div class="col-lg-4 col-sm-12 pb-3 pt-3">
-            <i class="fas fa-credit-card fa-4x mb-2 mt-2 security__icons"></i>
-            <p class="">BEST PRICE</p>
-            <small>The only official store</small>
+            <i class="fas fa-credit-card fa-4x mb-2 mt-2 security__icons security-icon"></i>
+            <p class="security-text">BEST PRICE</p>
+            <small class="security-text">The only official store</small>
         </div>
         <div class="col-lg-4 col-sm-12 pb-3 pt-3">
-            <i class="fas fa-lock fa-4x mb-2 mt-2 security__icons"></i>
-            <p class="">SECURE PAYMENT</p>
-            <small class="">100% secure payment</small>
+            <i class="fas fa-lock fa-4x mb-2 mt-2 security__icons security-icon"></i>
+            <p class="security-text">SECURE PAYMENT</p>
+            <small class="security-text">100% secure payment</small>
         </div>
         <div class="col-lg-4 col-sm-12 pb-3 pt-3">
-            <i class="fas fa-shipping-fast fa-4x mb-2 mt-2 security__icons"></i>
-            <p class="">FREE SHIPPING</p>
-            <small class="pb-3">Orders over $100</small>
+            <i class="fas fa-shipping-fast fa-4x mb-2 mt-2 security__icons security-icon"></i>
+            <p class="security-text">FREE SHIPPING</p>
+            <small class="security-text">Orders over $100</small>
         </div>
     </div>
 </section>
@@ -171,5 +171,26 @@
     
     TweenMax.to(".home__secondary", 2.5, {width: "100%",ease: Expo.easeInOut})
     gsap.from('.home__sub', {opacity: -1, duration: 1.5, delay: 1.5, x: 100})
+</script>
+<script type="text/javascript">
+    const sr = ScrollReveal({
+    origin: 'top',
+    distance: '80px',
+    duration: 2000,
+    reset: true
+})
+
+/*SCROLL FEATURED*/
+sr.reveal('.featured-title', {delay: 200})
+sr.reveal('.featured-card', {delay: 300})
+
+/*SCROLL ABOUT*/
+sr.reveal('.media-about', {delay: 200})
+sr.reveal('.media-text', {delay: 400})
+sr.reveal('.media-icon', {delay: 500, interval: 200})
+
+/*SCROLL SECURITY*/
+sr.reveal('.security-icon', {delay: 200, interval: 200})
+sr.reveal('.security-text', {delay: 400, interval: 200})
 </script>
 {% endblock%}
