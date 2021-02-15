@@ -122,59 +122,41 @@
                                             <p>average rating</p>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 review-btn-up">
-                                            <button type="button" class="btn btn-sm review-button-clear">write a review</button>
+                                            <a href="{% url 'review_product' product.id %}" type="button" class="btn btn-sm review-button-clear">write a review</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 ">
                                     <h5 class="mb-1 review-title-detail">Customer's reviews</h5>
                                     <div class=" pt-4 pb-4">
-                                        <div class="row align-items-start review-detail">
-                                            <div class="col-4">
-                                                <h6 class="mb-1">Audrey Lloancy</h6>
-                                                <p class="text-gray">Tue, 20 Mar 2021</p>
-                                                <p class="text-gray">France</p>
-                                            </div>
-                                                <div class="col-8">
-                                                    <h4 class="mb-3">
-                                                        <a href="#"><i class="far fa-star"></i></a>
-                                                        <a href="#"><i class="far fa-star"></i></a>
-                                                        <a href="#"><i class="far fa-star"></i></a>
-                                                        <a href="#"><i class="far fa-star"></i></a>
-                                                        <a href="#"><i class="far fa-star"></i></a>
-                                                    </h4>
-                                                    <div class="">
-                                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
-                                                        </p>
+                                        {% if product.reviews.count > 0 %}
+                                            {% for review in product.reviews.all %}
+                                                <div class="row align-items-start review-detail">
+                                                    <div class="col-4">
+                                                        <h6 class="mb-1">{{ review.reviewer }}</h6>
+                                                        <p class="text-gray">{{ review.date }}</p>
+                                                        <p class="text-gray">France</p>
+                                                    </div>
+                                                        <div class="col-8">
+                                                            <h4 class="mb-3">
+                                                                <a href="#"><i class="far fa-star"></i></a>
+                                                                <a href="#"><i class="far fa-star"></i></a>
+                                                                <a href="#"><i class="far fa-star"></i></a>
+                                                                <a href="#"><i class="far fa-star"></i></a>
+                                                                <a href="#"><i class="far fa-star"></i></a>
+                                                            </h4>
+                                                            <div class="">
+                                                                <p>{{ review.review }}</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p>No product reviews.</p>
+                                        {% endif %}
                                     <hr>
                                 </div>
-                            <div class="bg-white rounded shadow-sm p-4 mb-5 review-write">
-                                <h5 class="mb-4 review-write-detail">Leave a Review</h5>
-                                <p class="mb-2 review-write-detail">Your rating</p>
-                                <div class="mb-4 review-write-detail">
-                                    <span>
-                                        <a href="#"><i class="far fa-star"></i></a>
-                                        <a href="#"><i class="far fa-star"></i></a>
-                                        <a href="#"><i class="far fa-star"></i></a>
-                                        <a href="#"><i class="far fa-star"></i></a>
-                                        <a href="#"><i class="far fa-star"></i></a>
-                                    </span>
-                                </div>
-                                <form>
-                                    <div class="form-group review-write-detail">
-                                        <label>Your review</label>
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group review-write-detail">
-                                        <button class="btn btn-sm review-button-clear" type="button"> Submit Review 
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -206,7 +188,5 @@ sr.reveal('.review-average', {delay: 400})
 sr.reveal('.review-btn-up', {delay: 500})
 sr.reveal('.review-title-detail', {delay: 200})
 sr.reveal('.review-detail', {delay: 400})
-sr.reveal('.review-write', {delay: 600})
-sr.reveal('.review-write-detail', {delay: 800, interval: 200})
 </script>
 {% endblock %}

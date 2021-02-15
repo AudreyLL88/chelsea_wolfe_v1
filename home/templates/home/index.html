@@ -34,7 +34,7 @@
    </div>
    <hr>
    <div class="row featured-card">
-       <div class="col-sm-6 col-lg-4 col-xl-3 card__wrapper">
+       <div class="col-sm-6 col-lg-4 col-xl-3 card__wrapper no-gutters">
             <div class="box">
                 <div class="top__box">
                     <img src="media/hiss_cd.jpg" alt="">
@@ -50,7 +50,10 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="card__icon"><i class="fas fa-shopping-bag fa-lg"></i></div>
+                        <div class="card__icon">
+                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                <small class="text-muted">No Rating</small>
+                        </div>
                     </div>
                 </div>
             </div>

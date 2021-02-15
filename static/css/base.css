@@ -337,7 +337,7 @@ p {
    font-weight: bold;
 }
 .card__wrapper{
-  height: 525px;
+  height: 545px;
   background: white;
   position: relative;
   overflow: hidden;
@@ -371,7 +371,7 @@ p {
 }
 .bottom{
     width: 100%;
-    height: 20%;
+    height: 30%;
 }
 
 .bottom__box{
@@ -383,17 +383,22 @@ p {
 .card__details{
     float: left;
     padding: 20px;
+    margin-bottom: 15px;
     width: calc(70%);
 }
-.card__icon i{
-    font-size:30px;
-    padding:30px;
-    color: #254053;
-    transition: transform 0.5s;
+.card__icon{
+    padding-top: 20px;
+    font-size: var(--medium-font-size);
     }
 #featured .col-sm-12, 
 #featured .col-lg-4, 
 #featured .col-xl-3{
+    padding: 0;
+}
+
+.all-products .col-sm-12, 
+.all-products .col-lg-4, 
+.all-products .col-xl-3{
     padding: 0;
 }
 

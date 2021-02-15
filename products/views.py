@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, Review
+from .forms import ProductForm, ReviewForm
 
 # Create your views here.
 
@@ -64,9 +64,11 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(product=product)
 
     context = {
         'product': product,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -127,6 +129,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -139,3 +142,32 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def review_product(request, product_id):
+    """ Allows user to add a review """
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.reviewer = request.user
+            review.product = product
+            review.save()
+            messages.success(request, 'Thank you for your review !')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request,
+                           'Oops something went wrong. \
+                            Please try again.')
+    else:
+        form = ReviewForm(instance=product)
+    template = 'products/add_review.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
