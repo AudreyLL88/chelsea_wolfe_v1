@@ -686,6 +686,10 @@ margin-left: auto;
     border: 1px solid var(--second-color);
 }
 
+.checked {
+  color: orange;
+}
+
 @media only screen and (max-width: 567px) {
   .info-category{
     font-size: 1.8rem;

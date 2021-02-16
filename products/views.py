@@ -65,10 +65,19 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     reviews = Review.objects.filter(product=product)
+    if len(reviews) > 0:
+        average_rating = 0
+        for review in reviews:
+            average_rating += review.rating
+
+        average_rating = float(average_rating) / float(len(reviews))
+    else:
+        average_rating = 'N/A'
 
     context = {
         'product': product,
         'reviews': reviews,
+        'average_rating': average_rating,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -171,3 +180,17 @@ def review_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete review forever"""
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.user == review.reviewer:
+        review.delete()
+        messages.success(request, 'Your review is deleted !')
+        return redirect(reverse('products'))
+    else:
+        messages.error(request, 'You cannot do that !')
+        return redirect(reverse('products'))

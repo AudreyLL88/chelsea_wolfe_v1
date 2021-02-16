@@ -13,7 +13,6 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
         'price',
-        'rating',
         'image',
     )
 
@@ -37,9 +36,11 @@ class ReviewAdmin(admin.ModelAdmin):
         'review_title',
         'reviewer',
         'product',
+        'rating'
     )
 
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Review, ReviewAdmin)
+

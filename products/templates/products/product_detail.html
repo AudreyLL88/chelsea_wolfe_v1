@@ -109,17 +109,15 @@
                                 <h5 class="mb-0 mb-4 review-header">Ratings and Reviews</h5>
                                     <div class="row align-items-start">
                                         <div class="col-lg-4 col-sm-12 review-total">
-                                            <b class="text-black">334</b>
+                                            <b class="text-black">{{ product.reviews.count }}</b>
                                             <p>total review</p>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 review-average">
-                                            <b class="text-black">4.4</b>
-                                            <a href="#"><i class="far fa-star"></i></a>
-                                            <a href="#"><i class="far fa-star"></i></a>
-                                            <a href="#"><i class="far fa-star"></i></a>
-                                            <a href="#"><i class="far fa-star"></i></a>
-                                            <a href="#"><i class="far fa-star"></i></a>
-                                            <p>average rating</p>
+                                            {% if product.reviews.count > 0 %}
+                                            <p>{{ average_rating }} /5 <i class="far fa-star"></i></p>
+                                            {% else %}
+                                            <p>{{ average_rating }}</p>
+                                            {% endif %}
                                         </div>
                                         <div class="col-lg-4 col-sm-12 review-btn-up">
                                             <a href="{% url 'review_product' product.id %}" type="button" class="btn btn-sm review-button-clear">write a review</a>
@@ -137,20 +135,41 @@
                                                         <p class="text-gray">{{ review.date }}</p>
                                                         <p class="text-gray">France</p>
                                                     </div>
-                                                        <div class="col-8">
-                                                            <h4 class="mb-3">
-                                                                <a href="#"><i class="far fa-star"></i></a>
-                                                                <a href="#"><i class="far fa-star"></i></a>
-                                                                <a href="#"><i class="far fa-star"></i></a>
-                                                                <a href="#"><i class="far fa-star"></i></a>
-                                                                <a href="#"><i class="far fa-star"></i></a>
-                                                            </h4>
-                                                            <div class="">
-                                                                <p>{{ review.review }}</p>
-                                                            </div>
+                                                    <div class="col-8">
+                                                        <h4 class="mb-3">
+                                                            {{ review.rating }}
+                                                        </h4>
+                                                        <div class="">
+                                                            <p>{{ review.review }}</p>
+                                                        </div>
+                                                        {% if request.user.is_authenticated %}
+                                                        <div>
+                                                            <button type="button" class="btn btn-full" data-toggle="modal" data-target="#deleteReview-{{ review.id }}"><i class="fas fa-trash-alt"></i></button>
+                                                            <a href="" class="btn btn-full"><i class="fas fa-edit"></i></a>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                        </div>
+                                         <div class="modal fade" id="deleteReview-{{ review.id }}" tabindex="-1" aria-labelledby="deleteLabel-{{ review.id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title text-full font-weight-bold" id="deleteLabel">Do you want to delete your review?</h3>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure that your want to delete your review? This action cannot be undone.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                                            <a href="{% url 'delete_review' review.id %}" class="btn btn-danger ml-3">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                             {% endfor %}
                                         {% else %}
                                             <p>No product reviews.</p>

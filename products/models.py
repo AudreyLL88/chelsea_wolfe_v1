@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 
 
@@ -34,6 +35,9 @@ class Product(models.Model):
         return self.name
 
 
+INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 6)]
+
+
 class Review(models.Model):
     """Add a product review in database."""
     product = models.ForeignKey(
@@ -44,6 +48,8 @@ class Review(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     review_title = models.CharField(max_length=50, null=False, blank=False)
     review = models.TextField(max_length=1024, null=False, blank=False)
+    rating = models.IntegerField(choices=INTEGER_CHOICES, default='5')
 
     def __str__(self):
         return self.review_title
+
