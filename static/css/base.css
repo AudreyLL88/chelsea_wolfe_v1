@@ -579,7 +579,7 @@ p {
 }
 
 .allauth-form-inner-content input {
-    border-color: #000;
+    border-color: var(--second-color);
     border-radius: 0;
 }
 
@@ -596,15 +596,15 @@ p {
 	/* btn */
 	display: inline-block;
     font-weight: 400;
-    color: #fff;
+    color: var(--second-color);
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #000;
-    border: 1px solid #000;
+    background-color: var(--first-color);
+    border: 1px solid var(--second-color);
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -686,9 +686,6 @@ margin-left: auto;
     border: 1px solid var(--second-color);
 }
 
-.checked {
-  color: orange;
-}
 
 @media only screen and (max-width: 567px) {
   .info-category{

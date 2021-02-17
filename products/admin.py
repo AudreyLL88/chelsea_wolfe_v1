@@ -12,6 +12,8 @@ class ProductAdmin(admin.ModelAdmin):
         'sku',
         'name',
         'category',
+        'size',
+        'qty',
         'price',
         'image',
     )
