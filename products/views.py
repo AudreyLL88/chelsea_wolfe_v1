@@ -190,10 +190,10 @@ def delete_review(request, review_id):
     if request.user == review.reviewer:
         review.delete()
         messages.success(request, 'Your review is deleted !')
-        return redirect(reverse('products'))
+        return redirect(reverse('profile'))
     else:
         messages.error(request, 'You cannot do that !')
-        return redirect(reverse('products'))
+        return redirect(reverse('profile'))
 
 
 @login_required
@@ -207,7 +207,7 @@ def edit_review(request, review_id):
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your review is successfully edited')
-                return redirect(reverse('products'))
+                return redirect(reverse('profile'))
             else:
                 messages.error(request,
                                'Failed to edit product review. \
@@ -223,4 +223,4 @@ def edit_review(request, review_id):
         return render(request, template, context)
     else:
         messages.error(request, 'You cannot do that !')
-        return redirect(reverse('products'))
+        return redirect(reverse('profile'))
