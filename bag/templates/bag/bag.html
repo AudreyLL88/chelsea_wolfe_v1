@@ -22,7 +22,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-lg-8 col-xl-8">
+            <div class="col-md-12 col-lg-8 col-xl-8">
                 {% if bag_items %}
                     <div class="d-block d-md-none bag-total">
                         <div class="row">
@@ -100,7 +100,7 @@
                     </div>
                 {% else %}
                     <p class="lead mb-5">Your bag is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <a href="{% url 'products' %}" class="btn review-button-clear rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
