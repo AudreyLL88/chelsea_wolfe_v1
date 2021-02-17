@@ -718,3 +718,6 @@ margin-left: auto;
   }
 }
 
+.profile-header{
+    background-color: var(--first-color);
+}
