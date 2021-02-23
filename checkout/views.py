@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.contrib.auth.models import User
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -134,6 +137,28 @@ def checkout(request):
     return render(request, template, context)
 
 
+def _send_alert_email(product):
+    """Send the user a confirmation email"""
+
+    superusers = User.objects.filter(is_superuser=True).values_list('email')
+    print(superusers)
+    subject = render_to_string(
+        'checkout/admin_alert_email/admin_alert_email_subject.txt',
+        {'product': product})
+    print(subject)
+    body = render_to_string(
+        'checkout/admin_alert_email/admin_alert_email_body.txt',
+        {'product': product, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    print(body)
+    
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        superusers
+    )
+
+
 def checkout_success(request, order_number):
     """
     Handle successful checkouts
@@ -143,9 +168,11 @@ def checkout_success(request, order_number):
     items = json.loads(order.original_bag)
 
     for item in items:
-        sku = str('000000'+ item)
+        sku = str('000000' + item)
         product = get_object_or_404(Product, sku=sku)
         product.qty -= items[item]
+        if product.qty <= 3:
+            _send_alert_email(product)
         print(product.qty)
         product.save()
 

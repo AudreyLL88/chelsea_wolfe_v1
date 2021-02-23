@@ -1,0 +1,7 @@
+Hello Admin !
+
+The product {{ product.name }} is now low in stock. Only {{ product.qty }} items of this product remain.
+
+Sincerely,
+
+Chelsea Wolfe Merch Store
